@@ -57,23 +57,23 @@ namespace PortalRandkowy.API.Migrations
 
                     b.Property<string>("Education");
 
-                    b.Property<string>("EyeColour");
+                    b.Property<string>("EyeColor");
 
                     b.Property<string>("FreeTime");
 
-                    b.Property<string>("FriendWouldDescribeMe");
+                    b.Property<string>("FriendeWouldDescribeMe");
 
                     b.Property<string>("Gender");
 
                     b.Property<string>("Growth");
 
-                    b.Property<string>("HairColour");
+                    b.Property<string>("HairColor");
 
-                    b.Property<string>("IDontLike");
+                    b.Property<string>("IdoNotLike");
 
                     b.Property<string>("Ilike");
 
-                    b.Property<string>("Intrests");
+                    b.Property<string>("Interests");
 
                     b.Property<string>("ItFeelsBestIn");
 

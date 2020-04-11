@@ -9,7 +9,7 @@ using PortalRandkowy.API.Data;
 namespace PortalRandkowy.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200410231024_ExtendedUser")]
+    [Migration("20200411000951_ExtendedUser")]
     partial class ExtendedUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,23 +59,23 @@ namespace PortalRandkowy.API.Migrations
 
                     b.Property<string>("Education");
 
-                    b.Property<string>("EyeColour");
+                    b.Property<string>("EyeColor");
 
                     b.Property<string>("FreeTime");
 
-                    b.Property<string>("FriendWouldDescribeMe");
+                    b.Property<string>("FriendeWouldDescribeMe");
 
                     b.Property<string>("Gender");
 
                     b.Property<string>("Growth");
 
-                    b.Property<string>("HairColour");
+                    b.Property<string>("HairColor");
 
-                    b.Property<string>("IDontLike");
+                    b.Property<string>("IdoNotLike");
 
                     b.Property<string>("Ilike");
 
-                    b.Property<string>("Intrests");
+                    b.Property<string>("Interests");
 
                     b.Property<string>("ItFeelsBestIn");
 

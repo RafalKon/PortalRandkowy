@@ -45,7 +45,7 @@ namespace PortalRandkowy.API.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "EyeColour",
+                name: "EyeColor",
                 table: "Users",
                 nullable: true);
 
@@ -55,7 +55,7 @@ namespace PortalRandkowy.API.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "FriendWouldDescribeMe",
+                name: "FriendeWouldDescribeMe",
                 table: "Users",
                 nullable: true);
 
@@ -70,12 +70,12 @@ namespace PortalRandkowy.API.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "HairColour",
+                name: "HairColor",
                 table: "Users",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "IDontLike",
+                name: "IdoNotLike",
                 table: "Users",
                 nullable: true);
 
@@ -85,7 +85,7 @@ namespace PortalRandkowy.API.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "Intrests",
+                name: "Interests",
                 table: "Users",
                 nullable: true);
 
@@ -218,7 +218,7 @@ namespace PortalRandkowy.API.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "EyeColour",
+                name: "EyeColor",
                 table: "Users");
 
             migrationBuilder.DropColumn(
@@ -226,7 +226,7 @@ namespace PortalRandkowy.API.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "FriendWouldDescribeMe",
+                name: "FriendeWouldDescribeMe",
                 table: "Users");
 
             migrationBuilder.DropColumn(
@@ -238,11 +238,11 @@ namespace PortalRandkowy.API.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "HairColour",
+                name: "HairColor",
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "IDontLike",
+                name: "IdoNotLike",
                 table: "Users");
 
             migrationBuilder.DropColumn(
@@ -250,7 +250,7 @@ namespace PortalRandkowy.API.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "Intrests",
+                name: "Interests",
                 table: "Users");
 
             migrationBuilder.DropColumn(
