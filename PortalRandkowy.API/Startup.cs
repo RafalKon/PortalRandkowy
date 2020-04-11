@@ -35,6 +35,8 @@ namespace PortalRandkowy.API
             services.AddCors();
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository,AuthRespository>();
+            services.AddScoped<IGenericRepository,GenericRespository>();
+            services.AddScoped<IUserRepository,UserRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>{
                 options.TokenValidationParameters = new TokenValidationParameters
