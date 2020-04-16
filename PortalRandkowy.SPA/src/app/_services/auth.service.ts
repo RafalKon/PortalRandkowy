@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+
   constructor(private http: HttpClient) {}
 
   baseUrl = environment.apiUrl + 'auth/';
@@ -17,8 +18,8 @@ export class AuthService {
 
 
   login(model: any) {
-    return this.http.post(this.baseUrl + 'login', model).pipe(
-      map((response: any) => {
+    return this.http.post(this.baseUrl + 'login', model)
+    .pipe(map((response: any) => {
         const user = response;
         if (user) {
           localStorage.setItem('token', user.token);

@@ -33,7 +33,7 @@ export function tokenGetter() {
          config: {
             tokenGetter: tokenGetter,
             whitelistedDomains: ['localhost:5000'],
-            blacklistedRoutes:['localhost:500/api/auth']
+            blacklistedRoutes: ['localhost:500/api/auth']
          }
       })
    ],
