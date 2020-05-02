@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -27,10 +28,20 @@ namespace PortalRandkowy.API.Controllers
         public async Task<IActionResult> GetUsers()
         {
 
-            var users = await _repo.GetUsers();
-            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+            try
+            {
+                throw new Exception("Generujemy ręczny błąd");
 
-            return Ok(usersToReturn);
+                var users = await _repo.GetUsers();
+                var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+                return Ok(usersToReturn);
+            }
+            catch
+            {
+                return StatusCode(500, "Ręcznie wygenerowany wyjątek");
+            }
+
         }
 
         [HttpGet("{id}")]
