@@ -20,6 +20,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { UserCardComponent } from './user/user-card/user-card.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -32,7 +34,8 @@ export function tokenGetter() {
       HomeComponent,
       RegisterComponent,
       UserListComponent,
-      MessagesComponent
+      MessagesComponent,
+      UserCardComponent
    ],
    imports: [
       BrowserModule,
@@ -52,7 +55,8 @@ export function tokenGetter() {
       AuthService,
       AlertifyService,
       UserService,
-      AuthGuard
+      AuthGuard,
+      ErrorInterceptorProvider
    ],
    bootstrap: [
       AppComponent
