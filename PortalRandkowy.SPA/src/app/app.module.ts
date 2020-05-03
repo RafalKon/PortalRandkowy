@@ -22,6 +22,7 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { UserCardComponent } from './user/user-card/user-card.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -35,7 +36,8 @@ export function tokenGetter() {
       RegisterComponent,
       UserListComponent,
       MessagesComponent,
-      UserCardComponent
+      UserCardComponent,
+      UserDetailComponent
    ],
    imports: [
       BrowserModule,
