@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -12,18 +13,22 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
-  constructor(private userService: UserService, private alertiy: AlertifyService) { }
+  constructor(private userService: UserService,
+    private alertify: AlertifyService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadUser();
-  }
-
-  loadUser() {
-    this.userService.getUsers().subscribe((users: User[]) => {
-      this.users = users;
-    }, error => {
-        this.alertiy.error(error);
+    this.route.data.subscribe(data => {
+      this.users = data.users;
     });
   }
+
+  // loadUser() {
+  //   this.userService.getUsers().subscribe((users: User[]) => {
+  //     this.users = users;
+  //   }, error => {
+  //       this.alertiy.error(error);
+  //   });
+  // }
 
 }
