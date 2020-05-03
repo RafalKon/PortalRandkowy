@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap';
 
 
 
@@ -52,6 +53,7 @@ export function tokenGetter() {
       }),
       RouterModule.forRoot(appRoutes),
       BsDropdownModule.forRoot(),
+      TabsModule.forRoot()
    ],
    providers: [
       AuthService,
