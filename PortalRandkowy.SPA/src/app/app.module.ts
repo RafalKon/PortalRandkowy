@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap';
+import { NgxGalleryModule } from 'ngx-gallery-9';
+
 
 
 
@@ -29,7 +31,7 @@ import { UserListResolver } from './_resolvers/user-list.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
-}
+} 
 
 @NgModule({
    declarations: [
@@ -55,7 +57,8 @@ export function tokenGetter() {
       }),
       RouterModule.forRoot(appRoutes),
       BsDropdownModule.forRoot(),
-      TabsModule.forRoot()
+      TabsModule.forRoot(),
+      NgxGalleryModule
    ],
    providers: [
       AuthService,
