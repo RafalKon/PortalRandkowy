@@ -31,10 +31,11 @@ import { UserListResolver } from './_resolvers/user-list.resolver';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavesChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotosComponent } from './user/photos/photos.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
-} 
+}
 
 @NgModule({
    declarations: [
@@ -46,7 +47,8 @@ export function tokenGetter() {
       MessagesComponent,
       UserCardComponent,
       UserDetailComponent,
-      UserEditComponent
+      UserEditComponent,
+      PhotosComponent
    ],
    imports: [
       BrowserModule,
