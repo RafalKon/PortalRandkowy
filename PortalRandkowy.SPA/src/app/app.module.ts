@@ -5,10 +5,7 @@ import { FormsModule} from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery-9';
-
-
-
-
+import { FileUploadModule } from 'ng2-file-upload';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
@@ -64,7 +61,8 @@ export function tokenGetter() {
       RouterModule.forRoot(appRoutes),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
-      NgxGalleryModule
+      NgxGalleryModule,
+      FileUploadModule
    ],
    providers: [
       AuthService,
