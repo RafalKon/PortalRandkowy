@@ -27,6 +27,18 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "CloudinaryDotNet/1.3.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/CloudinaryDotNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/CloudinaryDotNet.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4654,6 +4666,23 @@
         "automapper.extensions.microsoft.dependencyinjection.4.0.1.nupkg.sha512",
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "CloudinaryDotNet/1.3.1": {
+      "sha512": "i6jZWXl3SaqQjvoe7UFJ5CORA/sEW+yVZuHajU/nE2lJuxCFihdpNWxSU7/lwpogzZ4ogbbk66Y9T5MfRQCihg==",
+      "type": "package",
+      "path": "cloudinarydotnet/1.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cloudinarydotnet.1.3.1.nupkg.sha512",
+        "cloudinarydotnet.nuspec",
+        "lib/net40/CloudinaryDotNet.dll",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/netcore/CloudinaryDotNet.deps.json",
+        "lib/netcore/CloudinaryDotNet.dll",
+        "lib/netstandard1.3/CloudinaryDotNet.deps.json",
+        "lib/netstandard1.3/CloudinaryDotNet.dll"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -12489,6 +12518,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 4.0.1",
+      "CloudinaryDotNet >= 1.3.1",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.2.4",
@@ -12502,11 +12532,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\rafal\\PortalRandkowy\\PortalRandkowy.API\\PortalRandkowy.API.csproj",
+      "projectUniqueName": "C:\\Users\\rafal\\PortalRandkowy\\PortalRandkowy.API\\PortalRandkowy.API.csproj",
       "projectName": "PortalRandkowy.API",
-      "projectPath": "c:\\Users\\rafal\\PortalRandkowy\\PortalRandkowy.API\\PortalRandkowy.API.csproj",
+      "projectPath": "C:\\Users\\rafal\\PortalRandkowy\\PortalRandkowy.API\\PortalRandkowy.API.csproj",
       "packagesPath": "C:\\Users\\rafal\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\rafal\\PortalRandkowy\\PortalRandkowy.API\\obj\\",
+      "outputPath": "C:\\Users\\rafal\\PortalRandkowy\\PortalRandkowy.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12538,6 +12568,10 @@
             "target": "Package",
             "version": "[4.0.1, )"
           },
+          "CloudinaryDotNet": {
+            "target": "Package",
+            "version": "[1.3.1, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -12567,5 +12601,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Element CloudinaryDotNet 1.3.1 zależy od elementu Newtonsoft.Json (>= 11.0.0), ale nie znaleziono elementu Newtonsoft.Json 11.0.0. Najlepsze rozpoznane przybliżone dopasowanie to Newtonsoft.Json 11.0.1.",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }

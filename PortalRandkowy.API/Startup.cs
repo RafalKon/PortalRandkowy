@@ -42,6 +42,7 @@ namespace PortalRandkowy.API
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("ClaudinarySettings"));
             services.AddAutoMapper();
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRespository>();
@@ -70,11 +71,11 @@ namespace PortalRandkowy.API
 
                 app.UseDeveloperExceptionPage();
             }
-              else
+            else
             {
-                app.UseExceptionHandler(builder => 
+                app.UseExceptionHandler(builder =>
                 {
-                    builder.Run(async context => 
+                    builder.Run(async context =>
                     {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
