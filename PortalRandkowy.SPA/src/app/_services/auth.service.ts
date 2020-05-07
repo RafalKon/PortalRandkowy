@@ -11,13 +11,13 @@ import { User } from '../_models/user';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
 
   baseUrl = environment.apiUrl + 'auth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   currentUser: User;
 
+  constructor(private http: HttpClient) { }
 
 
   login(model: any) {
@@ -25,6 +25,7 @@ export class AuthService {
       .pipe(map((response: any) => {
         const user = response;
         if (user) {
+          localStorage.setItem('token', user.token);
           localStorage.setItem('user', JSON.stringify(user.user));
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
           this.currentUser = user.user;
