@@ -12,14 +12,12 @@ using PortalRandkowy.API.Dtos;
 using PortalRandkowy.API.Helpers;
 using PortalRandkowy.API.Models;
 
-namespace PortalRandkowy.API.Controllers
-{
+namespace PortalRandkowy.API.Controllers {
     [Authorize]
     [Route ("api/users/{userId}/photos")]
     [ApiController]
-    public class PhotosController : ControllerBase
-    {
-   private readonly IUserRepository _repository;
+    public class PhotosController : ControllerBase {
+        private readonly IUserRepository _repository;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
         private Cloudinary _claudinary;
@@ -39,7 +37,7 @@ namespace PortalRandkowy.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPhotoForUser(int userId, PhotoForCreationDto photoForCreationDto)
+        public async Task<IActionResult> AddPhotoForUser(int userId, [FromForm]PhotoForCreationDto photoForCreationDto)
         {
              if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
@@ -74,9 +72,22 @@ namespace PortalRandkowy.API.Controllers
             userFromRepo.Photos.Add(photo);
 
             if (await _repository.SaveAll())
-                return Ok();
-
+            {
+                var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
+                return CreatedAtRoute("GetPhoto", new { id = photo.Id}, photoToReturn);
+            }
+                
             return BadRequest("Nie można dodać zdjęcia");
         }
+
+        [HttpGet("{id}", Name = "GetPhoto")]
+        public async Task<IActionResult> GetPhoto(int id)
+        {
+            var photoFromRepo = await _repository.GetPhoto(id);
+
+            var photoForReturn = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
+
+            return Ok(photoForReturn);
+        }
     }
-} 
+}
