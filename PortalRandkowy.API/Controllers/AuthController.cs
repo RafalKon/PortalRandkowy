@@ -34,35 +34,28 @@ namespace PortalRandkowy.API.Controllers
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repository.UserExists(userForRegisterDto.Username))
-            {
-                return BadRequest("Użytkownik o takiej nazwie już istnieje");
-            }
+                return BadRequest("Użytkownik o takiej nazwie już istnieje !");
 
-            var userToCreate = new User
-            {
-                Username = userForRegisterDto.Username
-            };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
-            var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password);
+            var cretedUser = await _repository.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var userToReturn = _mapper.Map<UserForDetailsDto>(cretedUser);
 
+            return CreatedAtRoute("GetUser", new { controller = "Users", Id = cretedUser.Id}, userToReturn);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-
             var userFromRepo = await _repository.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
-            {
                 return Unauthorized();
-            }
 
-            // Tworzenie tokenu
-
-            var claims = new[]{
+            // create Token
+            var claims = new[]
+            {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
@@ -70,7 +63,7 @@ namespace PortalRandkowy.API.Controllers
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
+            
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -80,14 +73,14 @@ namespace PortalRandkowy.API.Controllers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
+
             var user = _mapper.Map<UserForListDto>(userFromRepo);
 
-            return Ok(new
-            {
+            return Ok(new 
+            { 
                 token = tokenHandler.WriteToken(token),
                 user
             });
         }
-
     }
 }
