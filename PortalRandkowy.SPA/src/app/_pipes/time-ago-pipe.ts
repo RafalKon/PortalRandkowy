@@ -79,4 +79,4 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
             return 3600;
         }
     }
-} 
+}

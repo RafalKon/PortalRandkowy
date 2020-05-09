@@ -60,6 +60,8 @@ namespace PortalRandkowy.API
 
                 };
             });
+            services.AddScoped<LogUserActivity>();
+
 
         }
 
