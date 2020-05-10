@@ -38,7 +38,9 @@ namespace PortalRandkowy.API.Models
         public string MakesMeLaugh { get; set; }
         public string ItFeelsBestIn { get; set; }
         public string FriendeWouldDescribeMe { get; set; }
-        public ICollection<Photo> Photos { get; set; }    
+        public ICollection<Photo> Photos { get; set; }
+        public ICollection<Like> UserLikes { get; set; }    
+        public ICollection<Like> UserIsLiked { get; set; }     
 
 
 
