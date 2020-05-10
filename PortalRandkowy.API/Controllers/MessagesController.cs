@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -18,9 +19,9 @@ namespace PortalRandkowy.API.Controllers
     public class MessagesController : ControllerBase
     {
 
-          private readonly IUserRepository _repository;
+        private readonly IUserRepository _repository;
         private readonly IMapper _mapper;
-        public MessagesController (IUserRepository repository, IMapper mapper) 
+        public MessagesController(IUserRepository repository, IMapper mapper)
         {
             _mapper = mapper;
             _repository = repository;
@@ -38,6 +39,22 @@ namespace PortalRandkowy.API.Controllers
                 return NotFound();
 
             return Ok(messageFromRepo);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMessagesForUser(int userId, [FromQuery] MessageParams messageParams)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            messageParams.UserId = userId;
+            var messagesFromRepo = await _repository.GetMessagesForUser(messageParams);
+            var messagesToReturn = _mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
+
+            Response.AddPagination(messagesFromRepo.CurrentPage, messagesFromRepo.PageSize,
+                                    messagesFromRepo.TotalCount, messagesFromRepo.TotalPages);
+
+            return Ok(messagesToReturn);
         }
 
         [HttpPost]
@@ -60,9 +77,9 @@ namespace PortalRandkowy.API.Controllers
             var messageToReturn = _mapper.Map<MessageForCreationDto>(message);
 
             if (await _repository.SaveAll())
-                return CreatedAtRoute("GetMessage", new { id = message.Id}, messageToReturn);
+                return CreatedAtRoute("GetMessage", new { id = message.Id }, messageToReturn);
 
             throw new Exception("Utworzenie wiadomości nie powiodło się przy zapisie");
         }
     }
-} 
+}
