@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule, PaginationModule} from 'ngx-bootstrap';
+import { TabsModule, PaginationModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxGalleryModule } from 'ngx-gallery-9';
@@ -33,6 +33,7 @@ import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavesChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotosComponent } from './user/photos/photos.component';
 import { TimeAgoPipe } from './_pipes/time-ago-pipe';
+import { LikesResolver } from './_resolvers/likes.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -46,6 +47,7 @@ export function tokenGetter() {
       RegisterComponent,
       UserListComponent,
       MessagesComponent,
+      LikesComponent,
       UserCardComponent,
       UserDetailComponent,
       UserEditComponent,
@@ -83,7 +85,8 @@ export function tokenGetter() {
       UserDetailResolver,
       UserListResolver,
       UserEditResolver,
-      PreventUnsavesChanges
+      PreventUnsavesChanges,
+      LikesResolver
    ],
    bootstrap: [
       AppComponent

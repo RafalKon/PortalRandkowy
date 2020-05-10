@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class UserCardComponent implements OnInit {
 
   @Input() user: User;
-  
+
   constructor(private authService: AuthService,
     private userService: UserService,
     private alertify: AlertifyService) { }
@@ -22,11 +22,11 @@ export class UserCardComponent implements OnInit {
 
   sendLike(id: number) {
     this.userService.sendLike(this.authService.decodedToken.nameid, id)
-          .subscribe(data => {
-            this.alertify.success('Polubiłeś: ' + this.user.username);
-          }, error => {
-            this.alertify.error(error);
-          });
+      .subscribe(data => {
+        this.alertify.success('Polubiłeś: ' + this.user.username);
+      }, error => {
+        this.alertify.error(error);
+      });
   }
 
 }
